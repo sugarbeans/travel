@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper :options="swiperOption" v-if="showList">
       <swiper-slide  v-for="(page,index) of pages" :key="index">
         <div class="icon" v-for="item of page" :key="item.id">
           <div class="icon-img">
@@ -16,49 +16,13 @@
 <script>
     export default {
       name: "HomeIcons",
+      props: {'iconList': Array},
       data: function () {
         return {
-          swiperList: [{
-            id: 1001,
-            imgUrl: "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
-            desc: '景点门票游玩项目票'
-          },{
-          id: 1002,
-            imgUrl: "http://img1.qunarzz.com/piao/fusion/1803/3e/86314b2af03b7502.png",
-            desc: '水上乐园'
-        }, {
-            id: 1003,
-            imgUrl: "http://img1.qunarzz.com/piao/fusion/1803/95/8246f27355943202.png",
-            desc: '游乐场'
-          },{
-            id: 1004,
-            imgUrl: "http://img1.qunarzz.com/piao/fusion/1803/50/26ffa31b56646402.png",
-            desc: '海洋馆'
-          },{
-            id: 1005,
-            imgUrl: "http://img1.qunarzz.com/piao/fusion/1803/76/eb88861d78fb9902.png",
-            desc: '动植物园'
-          },{
-            id: 1006,
-            imgUrl: "http://img1.qunarzz.com/piao/fusion/1803/b1/528a9e80403b8c02.png",
-            desc: '玩转长隆'
-          },{
-            id: 1007,
-            imgUrl: "http://img1.qunarzz.com/piao/fusion/1803/b6/37560ece9c62b502.png",
-            desc: '城市观光'
-          },{
-            id: 1008,
-            imgUrl: "http://img1.qunarzz.com/piao/fusion/1803/27/dac2bcf9added702.png",
-            desc: '海滨沙滩'
-          },{
-            id: 1009,
-            imgUrl: "http://img1.qunarzz.com/piao/fusion/1804/95/8d02011d149bdb02.png",
-            desc: '汽车票'
-          },{
-            id: 1010,
-            imgUrl: "http://img1.qunarzz.com/piao/fusion/1803/80/416c6ab3368d1f02.png",
-            desc: '全部玩乐'
-          }]
+          swiperOption: {
+            autoplay: false,
+            loop: true,
+          }
         }
       },
 /*      computed: {
@@ -77,7 +41,7 @@
       computed: {
         pages: function () {
           const pages = [];
-          this.swiperList.forEach(function (item,index) {
+          this.iconList.forEach(function (item,index) {
             const page = Math.floor(index/8);
             if(!pages[page]){
               pages[page] = [];
@@ -85,6 +49,9 @@
             pages[page].push(item)
           });
           return pages
+        },
+        showList: function () {
+          return this.iconList.length;
         }
       }
     }

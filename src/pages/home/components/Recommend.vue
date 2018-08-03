@@ -17,29 +17,8 @@
 <script>
   export default {
     name: "HomeRecommend",
-    data: function () {
-      return {
-        recommendList: [
-          {
-            id: '1001',
-            imgUrl: 'http://img1.qunarzz.com/sight/p0/1507/64/34362835b4a219af8b36803d31a6380f.water.jpg_200x200_bc5c0452.jpg',
-            title: '深圳小梅沙海洋世界',
-            desc: '浪漫的海洋世界,浪漫之旅,小梅沙等你来'
-          },
-          {
-            id: '1002',
-            imgUrl: 'http://img1.qunarzz.com/sight/p0/1507/64/34362835b4a219af8b36803d31a6380f.water.jpg_200x200_bc5c0452.jpg',
-            title: '深圳小梅沙海洋世界',
-            desc: '浪漫的海洋世界,浪漫之旅,小梅沙等你来'
-          },
-          {
-            id: '1003',
-            imgUrl: 'http://img1.qunarzz.com/sight/p0/1507/64/34362835b4a219af8b36803d31a6380f.water.jpg_200x200_bc5c0452.jpg',
-            title: '深圳小梅沙海洋世界',
-            desc: '浪漫的海洋世界,浪漫之旅,小梅沙等你来'
-          }
-        ]
-      }
+    props: {
+      'recommendList': Array
     }
   }
 </script>
