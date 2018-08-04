@@ -29,7 +29,7 @@
       return {
         touchStatus: false,
         startY: 0,
-        timer: null
+        timer: 0
       }
     },
     updated(){
@@ -48,13 +48,26 @@
       handleTouchMove: function (e) {
         if(this.touchStatus) {
           if(this.timer) {
-            clearTimeout(this.timer)
+            clearTimeout(this.timer);
           }
+
+          //setTimeout中的this需要定义,如使用箭头函数就不需要定义this
+          /*const that_ = this;
           this.timer = setTimeout(function(){
             const touchY = e.touches[0].clientY-79;
+            const index = Math.floor((touchY-that_.startY)/20);
+            console.log("aaaaa"+that_.startY);
+            if(index>0 && index<that_.letters.length) {
+              that_.$emit('change', that_.letters[index]);
+              console.log("aaaaa");
+            }
+          },16);*/
+
+          this.timer = setTimeout(()=>{
+            const touchY = e.touches[0].clientY-79;
             const index = Math.floor((touchY-this.startY)/20);
-            if(index>0 && index<this.letters.length) {
-              this.$emit('change', this.letters[index])
+            if(index>=0 && index<this.letters.length) {
+              this.$emit('change', this.letters[index]);
             }
           },16)
         }
