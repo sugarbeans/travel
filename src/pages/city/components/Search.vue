@@ -7,7 +7,7 @@
       <ul>
         <li class="border-bottom search-item" @click="handleChangeCity(item.name)"
             :key="item.id" v-for="item of list">{{item.name}}</li>
-        <li class="border-bottom search-item" v-show="hasNullData">没有找到匹配的选项</li>
+        <li class="border-bottom search-item" v-show="hasNullData">没有找到匹配的选项，而且我是有底线的</li>
       </ul>
     </div>
   </div>
